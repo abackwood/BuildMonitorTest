@@ -26,5 +26,15 @@ namespace BuildMonitorTestTest {
 
             trein.VeranderAantalPassagiers(-10);
         }
+
+        [TestMethod]
+        public void GenererenVolgendeTreinResetAantalPassagiers() {
+            Trein trein = new Trein(1,1);
+            trein.VeranderAantalPassagiers(5);
+
+            Trein volgendeTrein = trein.genereerVolgendeTrein();
+
+            Assert.AreEqual(0,volgendeTrein.AantalPassagiers);
+        }
     }
 }

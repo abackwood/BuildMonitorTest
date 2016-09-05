@@ -25,7 +25,7 @@ namespace BuildMonitorTest {
         }
 
         public Trein genereerVolgendeTrein() {
-            return new Trein(Serienummer, Ritnummer + 1);
+            return new Trein(Serienummer,Ritnummer + 1);
         }
     }
 }
