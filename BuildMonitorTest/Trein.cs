@@ -8,11 +8,13 @@ namespace BuildMonitorTest {
     public class Trein {
         public int Serienummer { get; private set; }
         public int Ritnummer { get; private set; }
+        public int PassagiersCapaciteit { get; private set; }
         public int AantalPassagiers { get; private set; }
 
-        public Trein(int serienummer, int ritnummer) {
+        public Trein(int serienummer, int ritnummer, int passagiersCapaciteit) {
             this.Serienummer = serienummer;
             this.Ritnummer = ritnummer;
+            this.PassagiersCapaciteit = passagiersCapaciteit;
             this.AantalPassagiers = 0;
         }
 
@@ -20,12 +22,15 @@ namespace BuildMonitorTest {
             if (AantalPassagiers + delta < 0) {
                 throw new ArgumentException("Meer passagiers verwijderd dan aantal in de trein");
             }
+            else if (AantalPassagiers + delta > PassagiersCapaciteit) {
+                throw new ArgumentException("Meer passagiers toegevoegd dan capaciteit");
+            }
 
             AantalPassagiers += delta;
         }
 
         public Trein genereerVolgendeTrein() {
-            return new Trein(Serienummer,Ritnummer + 1);
+            return new Trein(Serienummer,Ritnummer + 1, PassagiersCapaciteit);
         }
     }
 }
