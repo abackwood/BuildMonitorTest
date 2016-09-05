@@ -30,7 +30,7 @@ namespace BuildMonitorTest {
         }
 
         public Trein genereerVolgendeTrein() {
-            return new Trein(Serienummer,Ritnummer + 1, PassagiersCapaciteit);
+            return new Trein(Serienummer, Ritnummer, PassagiersCapaciteit);
         }
     }
 }

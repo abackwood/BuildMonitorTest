@@ -36,7 +36,7 @@ namespace BuildMonitorTestTest {
         }
 
         [TestMethod]
-        public void GenererenVolgendeTreinResetAantalPassagiers() {
+        public void VolgendeTreinResetAantalPassagiers() {
             Trein trein = new Trein(1,1,100);
             trein.VeranderAantalPassagiers(5);
 
@@ -48,11 +48,19 @@ namespace BuildMonitorTestTest {
         [TestMethod]
         public void VolgendeTreinHeeftZelfdeCapaciteit() {
             Trein trein = new Trein(1,1,100);
-            trein.VeranderAantalPassagiers(5);
 
             Trein volgendeTrein = trein.genereerVolgendeTrein();
 
             Assert.AreEqual(100, volgendeTrein.PassagiersCapaciteit);
+        }
+
+        [TestMethod]
+        public void VolgendeTreinHeeftHogerRitnummer() {
+            Trein trein = new Trein(1,1,100);
+
+            Trein volgendeTrein = trein.genereerVolgendeTrein();
+
+            Assert.IsTrue(trein.Ritnummer < volgendeTrein.Ritnummer);
         }
     }
 }
