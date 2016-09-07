@@ -17,6 +17,10 @@ namespace BuildMonitorTest {
             return new Materieel(prototypes[type]);
         }
 
+        public void RegistreerPrototype(string type, Materieel prototype) {
+            prototypes[type] = prototype;
+        }
+
         private void VulPrototypesIn() {
             prototypes["sprinter"] = new Materieel(100,60);
             prototypes["intercity"] = new Materieel(200,120);

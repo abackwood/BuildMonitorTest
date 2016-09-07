@@ -5,6 +5,10 @@ using BuildMonitorTest;
 namespace BuildMonitorTestTest {
     [TestClass]
     public class TreinTest {
+        public static Trein MaakStandaardTrein() {
+            Materieel materieel = new Materieel(100,100);
+            return new Trein(1,1,materieel);
+        }
 
         [TestMethod]
         public void AantalPassagiersWordtCorrectVerhoogd() {
@@ -92,11 +96,6 @@ namespace BuildMonitorTestTest {
             Trein trein = new Trein(1,1,materieel,station1,station2,station3);
 
             Assert.AreEqual(2,trein.TrajectAfstand);
-        }
-
-        private Trein MaakStandaardTrein() {
-            Materieel materieel = new Materieel(100,100);
-            return new Trein(1,1,materieel);
         }
     }
 }
