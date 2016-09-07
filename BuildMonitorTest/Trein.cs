@@ -11,17 +11,17 @@ namespace BuildMonitorTest {
 
         public int Serienummer { get; private set; }
         public int Ritnummer { get; private set; }
-        public int PassagiersCapaciteit { get; private set; }
+        public Materieel Materieel { get; private set; }
         public int AantalPassagiers { get; private set; }
         public LinkedList<Station> Traject {
             get { return new LinkedList<Station>(traject); }
         }
         public double TrajectAfstand { get; private set; }
 
-        public Trein(int serienummer, int ritnummer, int passagiersCapaciteit, params Station[] trajectArray) {
+        public Trein(int serienummer, int ritnummer, Materieel materieel, params Station[] trajectArray) {
             this.Serienummer = serienummer;
             this.Ritnummer = ritnummer;
-            this.PassagiersCapaciteit = passagiersCapaciteit;
+            this.Materieel = materieel;
             this.AantalPassagiers = 0;
 
             traject = new LinkedList<Station>();
@@ -58,7 +58,7 @@ namespace BuildMonitorTest {
             if (AantalPassagiers + delta < 0) {
                 throw new ArgumentException("Meer passagiers verwijderd dan aantal in de trein");
             }
-            else if (AantalPassagiers + delta > PassagiersCapaciteit) {
+            else if (AantalPassagiers + delta > Materieel.PassagiersCapaciteit) {
                 throw new ArgumentException("Meer passagiers toegevoegd dan capaciteit");
             }
 
@@ -66,7 +66,7 @@ namespace BuildMonitorTest {
         }
 
         public Trein GenereerVolgendeTrein() {
-            return new Trein(Serienummer, Ritnummer + 1, PassagiersCapaciteit);
+            return new Trein(Serienummer, Ritnummer + 1, Materieel);
         }
     }
 }
