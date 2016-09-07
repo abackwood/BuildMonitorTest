@@ -20,6 +20,7 @@ namespace BuildMonitorTest {
         private void VulPrototypesIn() {
             prototypes["sprinter"] = new Materieel(100,60);
             prototypes["intercity"] = new Materieel(200,120);
+            prototypes["hispeed"] = new Materieel(140,260);
         }
     }
 }
