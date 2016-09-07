@@ -8,7 +8,8 @@ namespace BuildMonitorTestTest {
 
         [TestMethod]
         public void AantalPassagiersWordtCorrectVerhoogd() {
-            Trein trein = MaakStandaardTrein();
+            Materieel materieel = new Materieel(100);
+            Trein trein = new Trein(1,1,materieel);
             int oudAantal = trein.AantalPassagiers;
             int verandering = 5;
             int verwachtAantal = oudAantal + verandering;
@@ -21,7 +22,8 @@ namespace BuildMonitorTestTest {
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
         public void AantalPassagiersKanNietNegatiefZijn() {
-            Trein trein = MaakStandaardTrein();
+            Materieel materieel = new Materieel(100);
+            Trein trein = new Trein(1,1,materieel);
             trein.VeranderAantalPassagiers(5);
 
             trein.VeranderAantalPassagiers(-10);
@@ -30,14 +32,16 @@ namespace BuildMonitorTestTest {
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
         public void AantalPassagiersKanNietBovenCapaciteitZijn() {
-            Trein trein = MaakStandaardTrein();
+            Materieel materieel = new Materieel(100);
+            Trein trein = new Trein(1,1,materieel);
 
             trein.VeranderAantalPassagiers(105);
         }
 
         [TestMethod]
         public void VolgendeTreinResetAantalPassagiers() {
-            Trein trein = MaakStandaardTrein();
+            Materieel materieel = new Materieel(100);
+            Trein trein = new Trein(1,1,materieel);
             trein.VeranderAantalPassagiers(5);
 
             Trein volgendeTrein = trein.GenereerVolgendeTrein();
@@ -47,7 +51,8 @@ namespace BuildMonitorTestTest {
 
         [TestMethod]
         public void VolgendeTreinHeeftZelfdeCapaciteit() {
-            Trein trein = MaakStandaardTrein();
+            Materieel materieel = new Materieel(100);
+            Trein trein = new Trein(1,1,materieel);
 
             Trein volgendeTrein = trein.GenereerVolgendeTrein();
 
@@ -56,7 +61,8 @@ namespace BuildMonitorTestTest {
 
         [TestMethod]
         public void VolgendeTreinHeeftHogerRitnummer() {
-            Trein trein = MaakStandaardTrein();
+            Materieel materieel = new Materieel(100);
+            Trein trein = new Trein(1,1,materieel);
 
             Trein volgendeTrein = trein.GenereerVolgendeTrein();
 
@@ -68,7 +74,7 @@ namespace BuildMonitorTestTest {
             Station station1 = new Station(0,0);
             Station station2 = new Station(1,0);
             Station station3 = new Station(1,1);
-            Materieel materieel = new Materieel(100,100);
+            Materieel materieel = new Materieel(100);
             Trein trein = new Trein(1,1,materieel,station1,station2,station3);
 
             int aantalStations = trein.Traject.Count;
@@ -78,7 +84,8 @@ namespace BuildMonitorTestTest {
 
         [TestMethod]
         public void TrajectAfstandIsNulBijLeegTraject() {
-            Trein trein = MaakStandaardTrein();
+            Materieel materieel = new Materieel(100);
+            Trein trein = new Trein(1,1,materieel);
 
             Assert.AreEqual(0,trein.TrajectAfstand);
         }
@@ -88,15 +95,10 @@ namespace BuildMonitorTestTest {
             Station station1 = new Station(0,0);
             Station station2 = new Station(1,0);
             Station station3 = new Station(1,1);
-            Materieel materieel = new Materieel(100,100);
+            Materieel materieel = new Materieel(100);
             Trein trein = new Trein(1,1,materieel,station1,station2,station3);
 
             Assert.AreEqual(2,trein.TrajectAfstand);
-        }
-
-        private Trein MaakStandaardTrein() {
-            Materieel materieel = new Materieel(100,100);
-            return new Trein(1,1,materieel);
         }
     }
 }

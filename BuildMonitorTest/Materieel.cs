@@ -13,10 +13,5 @@ namespace BuildMonitorTest {
             this.PassagiersCapaciteit = capaciteit;
             this.MaximumSnelheid = maximumSnelheid;
         }
-
-        public Materieel(Materieel proto) {
-            this.PassagiersCapaciteit = proto.PassagiersCapaciteit;
-            this.MaximumSnelheid = proto.MaximumSnelheid;
-        }
     }
 }
