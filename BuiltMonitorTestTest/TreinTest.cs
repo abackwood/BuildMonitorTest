@@ -40,7 +40,7 @@ namespace BuildMonitorTestTest {
             Trein trein = new Trein(1,1,100);
             trein.VeranderAantalPassagiers(5);
 
-            Trein volgendeTrein = trein.genereerVolgendeTrein();
+            Trein volgendeTrein = trein.GenereerVolgendeTrein();
 
             Assert.AreEqual(0, volgendeTrein.AantalPassagiers);
         }
@@ -49,7 +49,7 @@ namespace BuildMonitorTestTest {
         public void VolgendeTreinHeeftZelfdeCapaciteit() {
             Trein trein = new Trein(1,1,100);
 
-            Trein volgendeTrein = trein.genereerVolgendeTrein();
+            Trein volgendeTrein = trein.GenereerVolgendeTrein();
 
             Assert.AreEqual(100, volgendeTrein.PassagiersCapaciteit);
         }
@@ -58,9 +58,38 @@ namespace BuildMonitorTestTest {
         public void VolgendeTreinHeeftHogerRitnummer() {
             Trein trein = new Trein(1,1,100);
 
-            Trein volgendeTrein = trein.genereerVolgendeTrein();
+            Trein volgendeTrein = trein.GenereerVolgendeTrein();
 
             Assert.IsTrue(trein.Ritnummer < volgendeTrein.Ritnummer);
+        }
+
+        [TestMethod]
+        public void TrajectAantalWordtJuistAAngemaaktInConstructor() {
+            Station station1 = new Station(0,0);
+            Station station2 = new Station(1,0);
+            Station station3 = new Station(1,1);
+            Trein trein = new Trein(1,1,100,station1,station2,station3);
+
+            int aantalStations = trein.Traject.Count;
+
+            Assert.AreEqual(3,aantalStations);
+        }
+
+        [TestMethod]
+        public void TrajectAfstandIsNulBijLeegTraject() {
+            Trein trein = new Trein(1,1,100);
+
+            Assert.AreEqual(0,trein.TrajectAfstand);
+        }
+
+        [TestMethod]
+        public void TrajectAfstandIsSomVanAfstanden() {
+            Station station1 = new Station(0,0);
+            Station station2 = new Station(1,0);
+            Station station3 = new Station(1,1);
+            Trein trein = new Trein(1,1,100,station1,station2,station3);
+
+            Assert.AreEqual(2,trein.TrajectAfstand);
         }
     }
 }

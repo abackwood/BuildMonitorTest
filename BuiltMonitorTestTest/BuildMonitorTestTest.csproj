@@ -6,8 +6,8 @@
     <ProjectGuid>{B408CFCF-843C-44F2-A7D4-FC9991C07672}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BuiltMonitorTestTest</RootNamespace>
-    <AssemblyName>BuiltMonitorTestTest</AssemblyName>
+    <RootNamespace>BuildMonitorTestTest</RootNamespace>
+    <AssemblyName>BuildMonitorTestTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="StationTest.cs" />
     <Compile Include="TreinTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
