@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Materieel.cs" />
+    <Compile Include="MaterieelManager.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="Trein.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
