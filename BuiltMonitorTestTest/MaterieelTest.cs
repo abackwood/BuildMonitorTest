@@ -9,6 +9,7 @@ using BuildMonitorTest;
 namespace BuildMonitorTestTest {
     [TestFixture]
     public class MaterieelTest {
+
         [Test]
         public void InstantieHeeftZelfdeEigenschappenAlsPrototype() {
             Materieel proto = new Materieel(100,100);
@@ -17,6 +18,17 @@ namespace BuildMonitorTestTest {
 
             Assert.AreEqual(proto.PassagiersCapaciteit,instantie.PassagiersCapaciteit);
             Assert.AreEqual(proto.MaximumSnelheid,instantie.MaximumSnelheid);
+        }
+
+        [Test]
+        public void PrototypeWordtGeregistreerdBijManager() {
+            MaterieelManager manager = new MaterieelManager();
+            Materieel proto = new Materieel(100,100);
+
+            manager.RegistreerPrototype("test",proto);
+            Materieel instantie = manager.MaakMaterieelVanType("test");
+
+            Assert.AreNotEqual(null,instantie);
         }
     }
 }
